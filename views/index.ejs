@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+  <%- include("./partials/head.ejs")%>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <%- include("./partials/navbar.ejs")%>
+    <article id = "message-wall">
+      <section class = "message">
+        <img class = "avatar" src = "/images/alien.svg" alt = "profile-pic"/>
+        <div class = "flex-wrapper">
+          <h3>Title</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, repudiandae. Cumque, a quibusdam repellat ipsam repellendus eius vitae molestias nostrum sapiente esse enim, sit impedit atque fugiat ad ex maiores.</p>
+          <div id = "date">2020-11-19 | 10:41</div>
+          <div id = "username"><img src = "/images/alien.svg">kiscigó rudika</div>
+        </div>
+      </section>
+      <section class = "message">
+        <img class = "avatar" src = "/images/alien.svg" alt = "profile-pic"/>
+        <div class = "flex-wrapper">
+          <h3>Title</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, repudiandae. Cumque, a quibusdam repellat ipsam repellendus eius vitae molestias nostrum sapiente esse enim, sit impedit atque fugiat ad ex maiores.</p>
+          <div id = "date">2020-11-19 | 10:41</div>
+          <div id = "username"><img src = "/images/alien.svg">kiscigó rudika</div>
+        </div>
+      </section>
+      <section class = "message">
+        <img class = "avatar" src = "/images/alien.svg" alt = "profile-pic"/>
+        <div class = "flex-wrapper">
+          <h3>Title</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, repudiandae. Cumque, a quibusdam repellat ipsam repellendus eius vitae molestias nostrum sapiente esse enim, sit impedit atque fugiat ad ex maiores.</p>
+          <div id = "date">2020-11-19 | 10:41</div>
+          <div id = "username"><img src = "/images/alien.svg">kiscigó rudika</div>
+        </div>
+      </section>
+    </article>
+    <%- include("./partials/footer.ejs")%>
   </body>
 </html>

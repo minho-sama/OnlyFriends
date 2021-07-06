@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head.ejs")%>
+  <body>
+    <%- include("./partials/navbar.ejs")%>
+    <form id = "submit-form" action = "" method = "POST">
+        <h1>Become a Member!</h1>
+        <img id = "submit-form-avatar" src = "/images/alien.svg" alt = "alien"/>
+        <div class = "input-field input-field-psw">
+            <input id = "password" 
+                type = "password"
+                name = "password"
+                placeholder = "Enter password"
+            required></textarea>
+            <button type = "submit">Submit</button>
+        </div>
+    </from>
+    <%- include("./partials/footer.ejs")%>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import './style-partials/scrollbar';
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+@mixin flex-align-vertical(){
+  display:flex;
+  align-items: center;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+  color: white;
+  background-color: rgb(34, 33, 33);
+}
+
+@import './style-partials/nav';
+
+#message-wall{
+  margin:20px auto 70px;
+  section{
+    background: rgb(10, 10, 10);
+    box-shadow: 3px 0px 3px rgba(0,0,0,0.3);
+    width: 90%;
+    padding:20px;
+    text-align: justify;
+    margin:auto 5% 20px;
+    border-radius: 5px;
+    position:relative;
+    min-height: 200px;
+    .avatar{
+      display:none;
+    }
+    h3{
+      margin-bottom: 10px;
+      color:rgb(22, 146, 140);
+    }
+    p{
+      background-color: rgb(34, 33, 33);
+      padding:10px;
+      margin: 10px auto;
+      border-radius:4px;
+    }
+    #date{
+      float:right;
+      font-size: 12px;
+      color:rgb(180, 179, 179);
+    }
+    #username{
+      display:flex;
+      align-items: center;
+      gap:5px;
+      position:absolute;
+      top:17px;
+      right:16px;
+      color:rgb(22, 146, 140);
+      img{
+        width:15px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 850px) {
+  #message-wall{
+    section{
+      display:flex;
+      gap:15px;
+      width:60%;
+      margin: 35px 20%;
+      .avatar{
+        display:block;
+        width: 140px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1150px) {
+  #message-wall{
+    section{
+      width:45%;
+      margin: 35px 27.5%;
+    }
+  }
+}
+
+@import './style-partials/submit-form';
+@import './style-partials/footer';
+
+
+
+
+
