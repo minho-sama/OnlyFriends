@@ -18,7 +18,7 @@ const UserSchema = new Schema({
 UserSchema
     .virtual('join_data_formatted')
     .get(function(){
-        return this.join_data.toLocaleDateString('en-CA')
+        return this.join_date.toLocaleDateString('en-CA')
     })
 
 module.exports = mongoose.model('User', UserSchema)

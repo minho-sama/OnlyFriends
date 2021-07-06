@@ -18,4 +18,12 @@ router.get('/become-admin', (req, res) => {
   res.render('admin')
 })
 
+router.get('/sign-up', (req, res) => {
+  res.render('signUp')
+})
+
+router.post('/sign-up', (req, res) => {
+  console.log(req.body)
+})
+
 module.exports = router;

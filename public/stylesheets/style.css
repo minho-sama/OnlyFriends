@@ -244,7 +244,7 @@ nav ul li a {
 
 #submit-form .input-field input, #submit-form .input-field textarea {
   background: #222121;
-  color: #0a0a0a;
+  color: #fff;
   padding: 5px;
   border: none;
   border-radius: 5px;
@@ -292,6 +292,57 @@ nav ul li a {
   border-radius: 1px;
 }
 
+#submit-form .input-field-signup {
+  width: 85%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+}
+
+#submit-form .input-field-signup #choose-caption {
+  margin-top: 30px;
+}
+
+#submit-form .input-field-signup .cc-selector {
+  margin-top: 30px;
+}
+
+#submit-form .input-field-signup #password, #submit-form .input-field-signup #username {
+  background: #222121;
+  color: #fff;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  width: 95%;
+  min-width: 95%;
+  max-width: 95%;
+  max-height: 80px;
+}
+
+#submit-form .input-field-signup button {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 25px 15px auto auto;
+  padding: 3px;
+  cursor: pointer;
+  background: #d4b31c;
+  border: none;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
 @media only screen and (min-width: 800px) {
   #submit-form {
     min-height: 480px;
@@ -307,6 +358,75 @@ nav ul li a {
   #submit-form {
     width: 50%;
     margin: 100px 25%;
+  }
+}
+
+.cc-selector input {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.cc-selector {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 17px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.spy {
+  background-image: url("/images/spy.svg");
+}
+
+.alien {
+  background-image: url("/images/alien.svg");
+}
+
+.robot {
+  background-image: url("/images/robot.svg");
+}
+
+.cc-selector input:active + .avatar-cc {
+  opacity: .9;
+}
+
+.cc-selector input:checked + .avatar-cc {
+  -webkit-filter: none;
+          filter: none;
+}
+
+.avatar-cc {
+  cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 100px;
+  height: 70px;
+  -webkit-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
+  -webkit-filter: brightness(1.8) grayscale(1) opacity(0.7);
+          filter: brightness(1.8) grayscale(1) opacity(0.7);
+}
+
+.avatar-cc:hover {
+  -webkit-filter: brightness(1.2) grayscale(0.5) opacity(0.9);
+          filter: brightness(1.2) grayscale(0.5) opacity(0.9);
+}
+
+@media only screen and (max-width: 700px) {
+  .cc-selector .spy, .cc-selector .alien, .cc-selector .robot {
+    width: 65px;
+  }
+  .cc-selector .robot {
+    margin-right: 15px;
   }
 }
 
