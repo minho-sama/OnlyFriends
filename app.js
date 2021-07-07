@@ -79,25 +79,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-//ez van az index routerben visszadobni őket!
-//hogyan tudom blokkolni az utat a menüpontokba nem loginoltaknka? redirect? (ha valaki raw-ban beírná url-be)
-app.get('/log-in', (req, res) => {
-  res.render('logIn', {user: res.locals.currentUser})
-})
-
-app.post('/log-in', passport.authenticate("local", {
-    successRedirect:"/",
-    failureRedirect:"/log-in",
-    failureFlash: true
-  })
-)
-
-app.get('/log-out',(req,res) => {
-  req.logout();
-  res.redirect("/")
-})
-//ez van az index routerben
-
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler

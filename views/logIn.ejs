@@ -17,11 +17,11 @@
                 placeholder = "password"
                 type = "password"
             required></input>
+              <%if(messages.error){%>
+                <p id = "err-msg-login"><%=messages.error%></p>
+              <%}%>
             <button type = "submit">Log in</button>
     </from>
-    <%if(messages.error){%>
-        <%JSON.stringify(messages.error)%>
-        <%}%>
     <%- include("./partials/footer.ejs")%>
   </body>
 </html>
