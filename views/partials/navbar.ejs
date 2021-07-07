@@ -1,13 +1,20 @@
 <nav>
     <a href = "/"><h1>OnlyFriends <img src = "/images/door.svg" alt = "door"/></h1></a>
-    <ul>
-        <li>
-            <a href = "/create-message">
-                <img src = "/images/email.png" alt = "letter"/>
-                Create Message</a>
-            </li>
-        <li><a href = "/become-member"><img src = "/images/like.svg" alt = "heart"/>Become Member</a></li>
-        <li><a href = "/become-admin"><img src = "/images/fire.svg" alt = "fire"/>Become Admin</a></li>
-        <li><a href = "/log-out"><img src = "/images/log-out-door.svg"alt = "opened-door.svg"/>log out</a></li>
-    </ul>
+    <%if(user){%>
+     <ul>
+         <li>
+             <a href = "/create-message">
+                 <img src = "/images/email.png" alt = "letter"/>
+                 Create Message</a>
+             </li>
+         <li><a href = "/become-member"><img src = "/images/like.svg" alt = "heart"/>Become Member</a></li>
+         <li><a href = "/become-admin"><img src = "/images/fire.svg" alt = "fire"/>Become Admin</a></li>
+         <li><a href = "/log-out"><img src = "/images/log-out-door.svg"alt = "opened-door.svg"/>log out</a></li>
+     </ul>
+    <%} else {%>
+        <ul>
+            <li><a href = "/log-in">Log in</a></li>
+            <li><a href = "/sign-up">Sign Up</a></li>
+        </ul>
+    <%}%>
 </nav>

@@ -5,9 +5,13 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+//authentication
+const session = require("express-session");
+const flash = require('express-flash')
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 
+const indexRouter = require('./routes/index');
 const app = express();
 
 //Set up mongoose connection
@@ -28,8 +32,73 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const User = require('./models/userModel');
+const bcrypt = require('bcryptjs')
+//passportjs functions
+passport.use(
+  //same usernames collide
+  new LocalStrategy((username, password, done) => {
+      User.findOne({username: username}, (err, user) => { //2nd argument mongoose findone is a callback function
+          if(err) return done(err)
+
+          if(!user){
+              return done(null, false, {message: "Incorrect username"})
+          }
+          bcrypt.compare(password, user.password, (err, res) => {
+              if(res){
+                  //passwords match
+                  return done(null, user)
+              } else{
+                  //passwords do not match
+                  return done(null, false, {message: "Incorrect password"})
+              }
+          })
+      })
+  })
+)
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+//more passport middlewares
+app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(flash())
+app.use(passport.session());
+app.use(express.urlencoded({ extended: false }));
+
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
+
+//ez van az index routerben visszadobni őket!
+//hogyan tudom blokkolni az utat a menüpontokba nem loginoltaknka? redirect? (ha valaki raw-ban beírná url-be)
+app.get('/log-in', (req, res) => {
+  res.render('logIn', {user: res.locals.currentUser})
+})
+
+app.post('/log-in', passport.authenticate("local", {
+    successRedirect:"/",
+    failureRedirect:"/log-in",
+    failureFlash: true
+  })
+)
+
+app.get('/log-out',(req,res) => {
+  req.logout();
+  res.redirect("/")
+})
+//ez van az index routerben
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -45,6 +114,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
+ });
 
 module.exports = app;
