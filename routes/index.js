@@ -17,13 +17,14 @@ function isLoggedIn(req, res, next) {
 
 /* GET home page. */
 router.get('/', async (req, res) => {
-
   try{
    const allMessages = await Message
       .find()
       .sort([['post_date', 'descending']])
       .populate('user')
    console.log('user :' + res.locals.currentUser)
+   console.log(allMessages) //date debug
+   
    res.render('index',{user: res.locals.currentUser, messages: allMessages});
   } catch(err){
     return next (err)

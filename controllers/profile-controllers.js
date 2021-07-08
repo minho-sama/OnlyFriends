@@ -3,7 +3,7 @@ const User = require('../models/userModel');
 
 const profile_page_get = async (req, res, next) => {
     try{
-        const userMessages = await Message.find({user: req.user._id})
+        const userMessages = await Message.find({user: req.user._id}).sort({'post_date': 'descending'})
         console.log(userMessages)
         res.render('profile_page', {user: res.locals.currentUser, user_messages: userMessages})
     } catch(err){

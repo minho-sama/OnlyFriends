@@ -25,7 +25,7 @@ const create_message_post = [
         })
     }
 ]
-
+  
 const delete_message_get = (req, res) => {
     res.render('delete-msg', {user: res.locals.currentUser, msg_id:req.params.id})
 }

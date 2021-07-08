@@ -13,7 +13,7 @@ MessageSchema
     .get(function(){
         return this.post_date.toLocaleString('en-CA')
 })
-
+ 
 MessageSchema
     .virtual('post_date_calendar')
     .get(function(){
@@ -23,6 +23,11 @@ MessageSchema
 MessageSchema
     .virtual('post_date_time')
     .get(function(){
+        if(this.post_date.toLocaleString('en-CA').length == 25){
+            const hour = this.post_date.toLocaleString('en-CA').slice(11, 17)
+            const ampm = this.post_date.toLocaleString('en-CA').slice(20, 24)
+            return hour + " " + ampm
+        }
         const hour = this.post_date.toLocaleString('en-CA').slice(11, 16)
         const ampm = this.post_date.toLocaleString('en-CA').slice(19, 24)
         return hour + " " + ampm
