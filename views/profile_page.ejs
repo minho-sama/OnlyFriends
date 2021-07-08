@@ -2,43 +2,55 @@
 <html>
   <%- include("./partials/head.ejs")%>
   <body>
-    <%- include("./partials/navbar.ejs")%>
-    <form id = "profile-page" action = "/update-user" method = "POST">
-        <h1 class = "<%=user.avatar%>-color"><%=user.username%></h1>
+    <%- include("./partials/navbar.ejs")%> 
+    <form id = "profile-page" action = "/update-user/<%=user._id%>" method = "POST">
         <img id = "profile-page-avatar" src = "/images/<%=user.avatar%>.svg" alt = "alien"/>
-
-        <div id = "profile-info-container">
-            <ul>
-                <li>username: <span><%=user.username%></span></li>
-                <li>joined: <span><%=user.join_date_formatted%></span></li>
-                <li>member: <img src = "/images/<%=user.member ?'checked':'cross'%>.svg" alt = "member-icon"/></li>
-                <li>admin: <img src = "/images/<%=user.admin ?'checked':'cross'%>.svg" alt = "member-icon"/></li>
-            </ul>
-        </div>
-
+        <table id = "profile-info-table">
+            <tr>
+                <td>username: </td>
+                <td><%=user.username%></td>
+            </tr>
+            <tr>
+                <td>joined: </td>
+                <td><%=user.join_date_formatted%></td>
+            </tr>
+            <tr>
+                <td>member:</td>
+                <td><img src = "/images/<%=user.member ?'checked':'cross'%>.svg" alt = "member-icon"/></td>
+            </tr>
+            <tr>
+                <td>admin:</td>
+                <td><img src = "/images/<%=user.admin ?'checked':'cross'%>.svg" alt = "member-icon"/></td>
+            </tr>
+        </table>
         <label id = "choose-caption" for = "cc-selector">You can change your avatar here:</label>
         <div class="cc-selector">
             <input id="spy" type="radio" name="avatar" value="spy" />
-            <label class="avatar-cc spy" for="spy"></label>
+            <label class="avatar-cc spy" style = "width:55px" for="spy"></label>
 
             <input id="alien" type="radio" name="avatar" value="alien" />
-            <label class="avatar-cc alien" for="alien"></label>
+            <label class="avatar-cc alien" style = "width:55px" for="alien"></label>
 
             <input id="robot" type="radio" name="avatar" value="robot" />
-            <label class="avatar-cc robot" for="robot"></label>
+            <label class="avatar-cc robot" style = "width:55px" for="robot"></label>
         </div>
+        <button id = "btn-update-avatar" type = submit>Update avatar</button>
     </from>
     <section id = "user-messages">
         <h3>submitted messages:</h3>
         <ul>
             <%if(user_messages.length > 0){%>
-                <%user_messages.map(message => {%>
-                    <li>message</li>
+                <%user_messages.map(message => {%> 
+                    <li>
+                        <div><a href = "/delete-message/<%=user._id%>"><%=message.title%></a></div>
+                        <div><%=message.post_date_calendar%> | <%=message.post_date_time%> </div>
+                        <div><a href = "/delete-message/<%=user._id%>"><img src = "/images/trash.svg" alt = "trashcan" /></a></div>
+                    </li>
                 <%})%>
             <%} else{%>
-                  <h4>You have no messages yet. Click <a href = "/create-message">here</a> to send some</h4>
+                    <h4>You have no messages yet. Click <a href = "/create-message">here</a> to send some</h4>
                 <%}%>
-        </ul>
+            </ul>
     </section>
     <%- include("./partials/footer.ejs")%>
   </body>

@@ -29,12 +29,16 @@ router.get('/', async (req, res) => {
     return next (err)
   }
 });
-
+ 
 
 //navbar routes
 router.get('/create-message', isLoggedIn, message_controller.create_message_get)
 
 router.post('/create-message', message_controller.create_message_post)
+
+router.get('/delete-message/:id', message_controller.delete_message_get)
+
+router.post('/delete-message/:id', message_controller.delete_message_post)
 
 router.get('/become-member', isLoggedIn, message_controller.member_get)
 
@@ -46,6 +50,8 @@ router.post('/become-admin', message_controller.admin_post)
 
 //profile-page routes
 router.get('/user/:id', isLoggedIn, profile_controller.profile_page_get)
+
+router.post('/update-user/:id', isLoggedIn, profile_controller.profile_page_update)
 
 //AUTH ROUTES
 router.get('/log-in', auth_controller.log_in_get)

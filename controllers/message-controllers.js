@@ -26,6 +26,10 @@ const create_message_post = [
     }
 ]
 
+const delete_message_get = (req, res) => {
+    res.render('delete-msg', {user: res.locals.currentUser, msg_id:req.params.id})
+}
+
 const delete_message_post = (req, res) => {
 
 }
@@ -64,6 +68,8 @@ const admin_post = (req, res, next) => {
 module.exports = {
     create_message_get,
     create_message_post,
+    delete_message_get,
+    delete_message_post,
     member_get,
     member_post,
     admin_get,
