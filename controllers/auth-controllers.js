@@ -2,10 +2,8 @@ const User = require('../models/userModel');
 const Message = require('../models/messageModel');
 const {body, validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs')
-const passport = require("passport");
+const passport = require("passport"); 
 
-
-//hogyan tudom blokkolni az utat a menüpontokba nem loginoltaknka? redirect? (ha valaki raw-ban beírná url-be)
 const log_in_get = (req, res) => {
     res.render('logIn', {user: res.locals.currentUser})
 }
@@ -33,7 +31,6 @@ const sign_up_post = [
         const takenUsername = await User.find({username: req.body.username})
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            console.log(errors)
             res.render('signUp', {errors: errors.array(), user:res.locals.currentUser})
         } 
         else if(takenUsername.length > 0){

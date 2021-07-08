@@ -38,7 +38,7 @@ const bcrypt = require('bcryptjs')
 passport.use(
   //same usernames collide
   new LocalStrategy((username, password, done) => {
-      User.findOne({username: username}, (err, user) => { //2nd argument mongoose findone is a callback function
+      User.findOne({username: username.trim()}, (err, user) => { //2nd argument mongoose findone is a callback function
           if(err) return done(err)
 
           if(!user){

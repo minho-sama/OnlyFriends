@@ -3,19 +3,24 @@
   <%- include("./partials/head.ejs")%>
   <body>
     <%- include("./partials/navbar.ejs")%>
-    <form id = "submit-form" action = "" method = "POST">
+    <form id = "submit-form" action = "/create-message" method = "POST">
         <h1>Create a Message !</h1>
-        <img id = "submit-form-avatar" src = "/images/alien.svg" alt = "alien"/>
+        <img id = "submit-form-avatar" src = "/images/<%=user.avatar%>.svg" alt = "alien"/>
         <div class = "input-field">
             <input id = "create-message-title" 
                 name = "title"
                 type= "text"
                 placeholder = "Enter a title"
-            required>
+            >
             <textarea id = "create-message-body" 
                 name = "message"
                 placeholder = "Enter a message"
-            required></textarea>
+            ></textarea>
+            <%if(errors.length > 0){%>
+              <%errors.map(error => {%>
+                <p id = "err-msg-create-msg"><%=error.msg%></p>
+              <%})%>
+              <%}%>
             <button type = "submit">Send Message</button>
         </div>
     </from>

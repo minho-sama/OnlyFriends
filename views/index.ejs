@@ -4,33 +4,47 @@
   <body>
     <%- include("./partials/navbar.ejs")%>
     <article id = "message-wall">
-      <section class = "message">
-        <img class = "avatar" src = "/images/alien.svg" alt = "profile-pic"/>
-        <div class = "flex-wrapper">
-          <h3>Title</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, repudiandae. Cumque, a quibusdam repellat ipsam repellendus eius vitae molestias nostrum sapiente esse enim, sit impedit atque fugiat ad ex maiores.</p>
-          <div id = "date">2020-11-19 | 10:41</div>
-          <div id = "username"><img src = "/images/alien.svg">kiscigó rudika</div>
-        </div>
-      </section>
-      <section class = "message">
-        <img class = "avatar" src = "/images/alien.svg" alt = "profile-pic"/>
-        <div class = "flex-wrapper">
-          <h3>Title</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, repudiandae. Cumque, a quibusdam repellat ipsam repellendus eius vitae molestias nostrum sapiente esse enim, sit impedit atque fugiat ad ex maiores.</p>
-          <div id = "date">2020-11-19 | 10:41</div>
-          <div id = "username"><img src = "/images/alien.svg">kiscigó rudika</div>
-        </div>
-      </section>
-      <section class = "message">
-        <img class = "avatar" src = "/images/alien.svg" alt = "profile-pic"/>
-        <div class = "flex-wrapper">
-          <h3>Title</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, repudiandae. Cumque, a quibusdam repellat ipsam repellendus eius vitae molestias nostrum sapiente esse enim, sit impedit atque fugiat ad ex maiores.</p>
-          <div id = "date">2020-11-19 | 10:41</div>
-          <div id = "username"><img src = "/images/alien.svg">kiscigó rudika</div>
-        </div>
-      </section>
+
+      <%if(user){%>
+        <%if(user.member){%>
+           <%messages.map(message => {%> 
+             <section class = "message">
+               <img class = "avatar" src = "/images/<%=message.user.avatar%>.svg" alt = "profile-pic"/>
+               <div class = "flex-wrapper">
+                 <h3 class = '<%=message.user.avatar%>-color' ><%=message.title%></h3>
+                 <p><%=message.message%></p>
+                 <div id = "date"><%=message.post_date_calendar%> | <%=message.post_date_time%></div>
+                 <div id = "username" class = '<%=message.user.avatar%>-color'><img src = "/images/<%=message.user.avatar%>.svg"><%=message.user.username%></div>
+               </div>
+             </section>
+           <%})%>
+          <%}else{%>
+            <%messages.map(message => {%> 
+              <section class = "message">
+                <img class = "avatar" src = "/images/<%=message.user.avatar%>.svg" alt = "profile-pic"/>
+                <div class = "flex-wrapper">
+                  <h3 class = '<%=message.user.avatar%>-color' ><%=message.title%></h3>
+                  <p>Become a member to see this message! <br>The password is: <span style = "color:#d1b848">vanillamilkshake</span></p>
+                  <div id = "date"><%=message.post_date_calendar%> | <%=message.post_date_time%></div>
+                  <div id = "username" class = '<%=message.user.avatar%>-color'><img src = "/images/<%=message.user.avatar%>.svg"><%=message.user.avatar%></div>
+                </div>
+              </section>
+            <%})%>
+          <%}%>
+        <%}else{%>
+          <%messages.map(message => {%> 
+            <section class = "message">
+              <img class = "avatar" src = "/images/<%=message.user.avatar%>.svg" alt = "profile-pic"/>
+              <div class = "flex-wrapper">
+                <h3 class = '<%=message.user.avatar%>-color' ><%=message.title%></h3>
+                <p><a href = "/sign-up">Sign up</a> and become a member to see this message</p>
+                <div id = "date"><%=message.post_date_calendar%> | <%=message.post_date_time%></div>
+                <div id = "username" class = '<%=message.user.avatar%>-color'><img src = "/images/<%=message.user.avatar%>.svg"><%=message.user.avatar%></div>
+              </div>
+            </section>
+          <%})%>
+          <%}%>
+
     </article>
     <%- include("./partials/footer.ejs")%>
   </body>

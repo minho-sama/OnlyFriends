@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head.ejs")%>
+  <body>
+    <%- include("./partials/navbar.ejs")%>
+    <form id = "profile-page" action = "/update-user" method = "POST">
+        <h1><%=user.username%></h1>
+        <img id = "profile-page-avatar" src = "/images/<%=user.avatar%>.svg" alt = "alien"/>
+
+        <label id = "choose-caption" for = "cc-selector">You can change your avatar here:</label>
+        <div class="cc-selector">
+            <input id="spy" type="radio" name="avatar" value="spy" />
+            <label class="avatar-cc spy" for="spy"></label>
+
+            <input id="alien" type="radio" name="avatar" value="alien" />
+            <label class="avatar-cc alien" for="alien"></label>
+
+            <input id="robot" type="radio" name="avatar" value="robot" />
+            <label class="avatar-cc robot" for="robot"></label>
+        </div>
+    </from>
+    <%- include("./partials/footer.ejs")%>
+  </body>
+</html>

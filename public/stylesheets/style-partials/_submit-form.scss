@@ -29,7 +29,7 @@
             color:#fff;
             padding: 5px;
             border:none;
-            border-radius: 5px;
+            border-radius: 3px;
             font-size: 15px;
             width:95%;
             min-width:95%;
@@ -82,7 +82,7 @@
             color: #fff;
             padding: 5px;
             border:none;
-            border-radius: 5px;
+            border-radius: 3px;
             font-size: 15px;
             width:95%;
             min-width:95%;
@@ -102,11 +102,12 @@
     }
 }
 
-#err-msg-login, #err-msg-signup{
+#err-msg-login, #err-msg-signup, #err-msg-create-msg{
     color:rgb(226, 70, 70);
     text-shadow: 2px 2px 2px rgba(51, 49, 49, 0.3);
     align-self: flex-start;
     margin-left: 13px;
+    font-size:12px;
 }
 
 @media only screen and (min-width: 800px){

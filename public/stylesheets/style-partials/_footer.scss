@@ -12,8 +12,16 @@ footer{
       @include flex-align-vertical();
       gap:5px;
       cursor:pointer;
+      transition: 0.2s;
+      #profile-link{
+        color:#fff;
+        text-decoration: none;
+        &:hover{
+          color:rgb(180, 179, 179);
+        }
+      }
     }
-    a{
+    #gh-link{
       text-decoration: none;
       color:#fff;
       @include flex-align-vertical();

@@ -12,6 +12,20 @@ MessageSchema
     .virtual('post_date_formatted')
     .get(function(){
         return this.post_date.toLocaleString('en-CA')
-    })
+})
+
+MessageSchema
+    .virtual('post_date_calendar')
+    .get(function(){
+        return this.post_date.toLocaleString('en-CA').slice(0,10)
+})
+
+MessageSchema
+    .virtual('post_date_time')
+    .get(function(){
+        const hour = this.post_date.toLocaleString('en-CA').slice(11, 16)
+        const ampm = this.post_date.toLocaleString('en-CA').slice(19, 24)
+        return hour + " " + ampm
+})
 
 module.exports = mongoose.model('Message', MessageSchema)

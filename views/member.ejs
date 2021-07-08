@@ -3,9 +3,9 @@
   <%- include("./partials/head.ejs")%>
   <body>
     <%- include("./partials/navbar.ejs")%>
-    <form id = "submit-form" action = "" method = "POST">
+    <form id = "submit-form" action = "/become-member" method = "POST">
         <h1>Become a Member!</h1>
-        <img id = "submit-form-avatar" src = "/images/alien.svg" alt = "alien"/>
+        <img id = "submit-form-avatar" src = "/images/<%=user.avatar%>.svg" alt = "alien"/>
         <div class = "input-field input-field-psw">
             <input id = "password" 
                 type = "password"
@@ -14,6 +14,11 @@
             required></textarea>
             <button type = "submit">Submit</button>
         </div>
+        <%if(errMessages.length > 0){%>
+          <%errMessages.forEach(message => {%>
+              <p style = "color:rgb(226, 70, 70);font-size:12px"><%=message%></p>
+          <%})%>
+        <%}%>
     </from>
     <%- include("./partials/footer.ejs")%>
   </body>

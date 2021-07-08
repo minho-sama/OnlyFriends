@@ -135,7 +135,6 @@ nav ul li a {
 
 #message-wall section h3 {
   margin-bottom: 10px;
-  color: #16928c;
 }
 
 #message-wall section p {
@@ -143,6 +142,20 @@ nav ul li a {
   padding: 10px;
   margin: 10px auto;
   border-radius: 4px;
+  min-height: 93px;
+  min-width: 85%;
+}
+
+#message-wall section p a {
+  color: #d1b848;
+  font-weight: 600;
+  text-decoration: none;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+#message-wall section p a:hover {
+  color: #9e840e;
 }
 
 #message-wall section #date {
@@ -162,11 +175,22 @@ nav ul li a {
   position: absolute;
   top: 17px;
   right: 16px;
-  color: #16928c;
 }
 
 #message-wall section #username img {
   width: 15px;
+}
+
+#message-wall section .spy-color {
+  color: #d4b31c;
+}
+
+#message-wall section .alien-color {
+  color: #16928c;
+}
+
+#message-wall section .robot-color {
+  color: #b5e6e7;
 }
 
 @media only screen and (min-width: 850px) {
@@ -174,7 +198,7 @@ nav ul li a {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    gap: 15px;
+    gap: 20px;
     width: 60%;
     margin: 35px 20%;
   }
@@ -182,12 +206,78 @@ nav ul li a {
     display: block;
     width: 140px;
   }
+  #message-wall section p {
+    min-width: 320px;
+  }
 }
 
 @media only screen and (min-width: 1150px) {
   #message-wall section {
     width: 45%;
     margin: 35px 27.5%;
+  }
+  #message-wall section p {
+    min-width: 330px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  #message-wall section p {
+    min-width: 390px;
+  }
+}
+
+@media only screen and (min-width: 1370px) {
+  #message-wall section p {
+    min-width: 450px;
+  }
+}
+
+#profile-page {
+  width: 90%;
+  margin: 40px 5% 70px;
+  padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 40px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-shadow: 3px 0px 3px rgba(0, 0, 0, 0.3);
+          box-shadow: 3px 0px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  background: #0a0a0a;
+}
+
+#profile-page h1 {
+  text-align: center;
+  font-size: 20px;
+}
+
+#profile-page #profile-page-avatar {
+  width: 150px;
+}
+
+@media only screen and (min-width: 800px) {
+  #profile-page {
+    min-height: 480px;
+    width: 70%;
+    margin: 100px 15%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #profile-page {
+    width: 50%;
+    margin: 100px 25%;
   }
 }
 
@@ -247,7 +337,7 @@ nav ul li a {
   color: #fff;
   padding: 5px;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   font-size: 15px;
   width: 95%;
   min-width: 95%;
@@ -323,7 +413,7 @@ nav ul li a {
   color: #fff;
   padding: 5px;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   font-size: 15px;
   width: 95%;
   min-width: 95%;
@@ -343,12 +433,13 @@ nav ul li a {
   font-weight: 600;
 }
 
-#err-msg-login, #err-msg-signup {
+#err-msg-login, #err-msg-signup, #err-msg-create-msg {
   color: #e24646;
   text-shadow: 2px 2px 2px rgba(51, 49, 49, 0.3);
   -ms-flex-item-align: start;
       align-self: flex-start;
   margin-left: 13px;
+  font-size: 12px;
 }
 
 @media only screen and (min-width: 800px) {
@@ -465,9 +556,20 @@ footer div {
           align-items: center;
   gap: 5px;
   cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
-footer a {
+footer div #profile-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer div #profile-link:hover {
+  color: #b4b3b3;
+}
+
+footer #gh-link {
   text-decoration: none;
   color: #fff;
   display: -webkit-box;
@@ -483,7 +585,7 @@ footer a {
   transition: 0.2s;
 }
 
-footer a:hover {
+footer #gh-link:hover {
   color: #b4b3b3;
 }
 /*# sourceMappingURL=style.css.map */

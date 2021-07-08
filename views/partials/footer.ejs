@@ -1,10 +1,14 @@
 <footer>
-    <%//itt lesz a username%>
     <div>
-        <img src = "/images/spy.svg" alt = "user"/>
-        <p>username here</p>
+        <%if(user){%>
+          <img src = "/images/<%=user.avatar%>.svg" alt = "user"/>
+          <p><a id = "profile-link" href = "/user/<%=user._id%>"><%=user.username%></a></p>
+        <%} else{%>
+              <img src = "/images/spy.svg" alt = "user"/>
+              <a href = "/log-in" id = "profile-link">log in</a>
+            <%}%>
     </div>
-    <a href = "https://github.com/minho-sama/OnlyFriends" target = "_blank">
+    <a id = "gh-link" href = "https://github.com/minho-sama/OnlyFriends" target = "_blank">
         minh <img src = "/images/github.svg" alt = "github-logo"/>
     </a>
 </footer>

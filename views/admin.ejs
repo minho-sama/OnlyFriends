@@ -3,7 +3,7 @@
   <%- include("./partials/head.ejs")%>
   <body>
     <%- include("./partials/navbar.ejs")%>
-    <form id = "submit-form" action = "" method = "POST">
+    <form id = "submit-form" action = "/become-admin" method = "POST">
         <h1>Become a Admin!</h1>
         <img id = "submit-form-avatar" src = "/images/big-brother.svg" alt = "admin"/>
         <div class = "input-field input-field-psw">
@@ -14,7 +14,12 @@
             required></textarea>
             <button type = "submit">Submit</button>
         </div>
+        <%if(errMessages.length > 0){%>
+          <%errMessages.forEach(message => {%>
+              <p style = "color:rgb(226, 70, 70); font-size:12px"><%=message%></p>
+          <%})%>
+        <%}%>
     </from>
     <%- include("./partials/footer.ejs")%>
   </body>
-</html>
+</html> 
