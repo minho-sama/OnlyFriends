@@ -16,7 +16,7 @@ const UserSchema = new Schema({
 })
 
 UserSchema
-    .virtual('join_data_formatted')
+    .virtual('join_date_formatted')
     .get(function(){
         return this.join_date.toLocaleDateString('en-CA')
     })

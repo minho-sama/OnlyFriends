@@ -266,6 +266,18 @@ nav ul li a {
   width: 150px;
 }
 
+#profile-page .spy-color {
+  color: #d4b31c;
+}
+
+#profile-page .alien-color {
+  color: #16928c;
+}
+
+#profile-page .robot-color {
+  color: #b5e6e7;
+}
+
 @media only screen and (min-width: 800px) {
   #profile-page {
     min-height: 480px;

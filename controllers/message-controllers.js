@@ -10,7 +10,7 @@ const create_message_post = [
     body('title').trim().isLength({min:1}).escape().withMessage('message must have a title'),
     body('message').trim().isLength({min:1}).escape().withMessage('message must have at least 1 character'),
 
-    (req,  res, next) => {
+    (req, res, next) => {
         const errors = validationResult(req)
         if(!errors.isEmpty()){
             res.render('create-message-form', {errors: errors.array(), user:res.locals.currentUser})
@@ -50,7 +50,7 @@ const admin_get = (req, res) => {
     res.render('admin', {user: res.locals.currentUser, errMessages: []})
 }
 
-const admin_post = (req, res) => {
+const admin_post = (req, res, next) => {
     if(req.body.password !== process.env.ADMIN_PSW){
         res.render('admin', {errMessages: ['wrong password'], user: res.locals.currentUser})
     } else{

@@ -4,8 +4,17 @@
   <body>
     <%- include("./partials/navbar.ejs")%>
     <form id = "profile-page" action = "/update-user" method = "POST">
-        <h1><%=user.username%></h1>
+        <h1 class = "<%=user.avatar%>-color"><%=user.username%></h1>
         <img id = "profile-page-avatar" src = "/images/<%=user.avatar%>.svg" alt = "alien"/>
+
+        <div id = "profile-info-container">
+            <ul>
+                <li>username: <span><%=user.username%></span></li>
+                <li>joined: <span><%=user.join_date_formatted%></span></li>
+                <li>member: <img src = "/images/<%=user.member ?'checked':'cross'%>.svg" alt = "member-icon"/></li>
+                <li>admin: <img src = "/images/<%=user.admin ?'checked':'cross'%>.svg" alt = "member-icon"/></li>
+            </ul>
+        </div>
 
         <label id = "choose-caption" for = "cc-selector">You can change your avatar here:</label>
         <div class="cc-selector">
@@ -19,6 +28,18 @@
             <label class="avatar-cc robot" for="robot"></label>
         </div>
     </from>
+    <section id = "user-messages">
+        <h3>submitted messages:</h3>
+        <ul>
+            <%if(user_messages.length > 0){%>
+                <%user_messages.map(message => {%>
+                    <li>message</li>
+                <%})%>
+            <%} else{%>
+                  <h4>You have no messages yet. Click <a href = "/create-message">here</a> to send some</h4>
+                <%}%>
+        </ul>
+    </section>
     <%- include("./partials/footer.ejs")%>
   </body>
 </html>
