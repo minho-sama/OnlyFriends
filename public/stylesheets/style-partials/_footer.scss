@@ -5,6 +5,7 @@ footer{
     width:100%;
     padding:10px;
     background: rgb(10, 10, 10);
+    transition:0.3s;
     img{
       width:15px;
     }
@@ -33,4 +34,7 @@ footer{
         color: rgb(180, 179, 179);
       }
     }
+  }
+  .footer-top-gold{
+    border-top: 2px solid #d4b31c;
   }

@@ -236,7 +236,7 @@ nav ul li a {
 #profile-page {
   width: 90%;
   margin: 40px 5% 70px;
-  margin-top: 40px !important;
+  margin-top: 50px !important;
   padding: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -655,6 +655,8 @@ footer {
   width: 100%;
   padding: 10px;
   background: #0a0a0a;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 footer img {
@@ -701,5 +703,9 @@ footer #gh-link {
 
 footer #gh-link:hover {
   color: #b4b3b3;
+}
+
+.footer-top-gold {
+  border-top: 2px solid #d4b31c;
 }
 /*# sourceMappingURL=style.css.map */
