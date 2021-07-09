@@ -23,8 +23,10 @@
               <%}%>
             <div id = "date"><%=message.post_date_calendar%> | <%=message.post_date_time%></div>
             <div id = "username" class = '<%=message.user.avatar%>-color'><img src = "/images/<%=message.user.avatar%>.svg">
-              <%if(!user || !user.member || !user.admin){%>
+              <%if(!user || !user.member){%>
                 <%=message.user.avatar%>
+              <%}else if(user.admin){%>
+                <%=message.user.username%>
               <%}else{%>
                 <%=message.user.username%>
               <%}%>
