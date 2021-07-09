@@ -22,7 +22,7 @@
                 <td>admin:</td>
                 <td><img src = "/images/<%=user.admin ?'checked':'cross'%>.svg" alt = "member-icon"/></td>
             </tr>
-        </table>
+        </table> 
         <label id = "choose-caption" for = "cc-selector">You can change your avatar here:</label>
         <div class="cc-selector">
             <input id="spy" type="radio" name="avatar" value="spy" />
@@ -42,9 +42,9 @@
             <%if(user_messages.length > 0){%>
                 <%user_messages.map(message => {%> 
                     <li>
-                        <div><a href = "/delete-message/<%=user._id%>"><%=message.title%></a></div>
+                        <div><a href = "/delete-message/<%=message._id%>"><%=message.title%></a></div>
                         <div><%=message.post_date_calendar%> | <%=message.post_date_time%> </div>
-                        <div><a href = "/delete-message/<%=user._id%>"><img src = "/images/trash.svg" alt = "trashcan" /></a></div>
+                        <div><a href = "/delete-message/<%=message._id%>"><img src = "/images/trash.svg" alt = "trashcan" /></a></div>
                     </li>
                 <%})%>
             <%} else{%>

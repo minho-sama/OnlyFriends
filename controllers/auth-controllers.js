@@ -20,7 +20,7 @@ const log_out = (req,res) => {
 }
 
 const sign_up_get = (req, res) => {
-    res.render('signUp', {user: res.locals.currentUser, errors:[]})
+    res.render('signUp', {user: res.locals.currentUser, errors:[], success:[]})
 }
 
 const sign_up_post = [
@@ -31,10 +31,10 @@ const sign_up_post = [
         const takenUsername = await User.find({username: req.body.username})
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            res.render('signUp', {errors: errors.array(), user:res.locals.currentUser})
+            res.render('signUp', {errors: errors.array(), success:[], user:res.locals.currentUser})
         } 
         else if(takenUsername.length > 0){
-            res.render('signUp', {errors:[{msg: 'username already taken'}], user:res.locals.currentUser})
+            res.render('signUp', {errors:[{msg: 'username already taken'}], success: [], user:res.locals.currentUser})
         } else{
             bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
                 if(err) return next(err)
@@ -45,7 +45,7 @@ const sign_up_post = [
                       avatar: req.body.avatar
                   }).save(err => {
                       if(err) return next(err)
-                      res.redirect("/")
+                      res.render('signUp', {errors: [], success:[{msg: "You signed up successfully, please log in"}], user: res.locals.currentUser})
                   })
                 }
             })

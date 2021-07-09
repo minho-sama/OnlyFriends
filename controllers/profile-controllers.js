@@ -21,7 +21,17 @@ const profile_page_update = (req, res, next) => {
     }) 
 }
 
+const admin_board_get = async (req, res, next) => {
+    Promise.all([
+        await User.find(),
+        await Message.find()
+    ]).then((data) => {
+        res.render('admin-board', {user: res.locals.currentUser, allUsers: data[0], allMessages: data[1]})
+    })
+}
+
 module.exports = {
     profile_page_get,
-    profile_page_update
+    profile_page_update,
+    admin_board_get
 }

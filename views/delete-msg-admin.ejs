@@ -14,12 +14,14 @@
               <p class = "grey-bg"><%=message.message%></p>
               <div class = "input-field input-field-psw input-field-psw-smaller">
                 <input id = "password" 
-                    type = "hidden"
+                    type = "password"
                     name = "password"
-                    value = <%=process.env.DELETE_PSW%>
-                placeholder = "password"/>
+                placeholder = "secret password"/>
                 <button type = "submit">Delete Message</button>
               </div>
+              <%if(errMsg.length>0){%>
+                <p id = "err-msg-login" style = "align-self:unset">Incorrect password</p>
+              <%}%>
             </div>
     </from>
     <%- include("./partials/footer.ejs")%>

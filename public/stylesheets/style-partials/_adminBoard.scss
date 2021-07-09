@@ -1,0 +1,66 @@
+#admin-board{
+    width: 90%;
+    margin: 40px 5% 70px;
+    margin-top:50px !important;
+    padding: 30px;
+    box-shadow: 3px 0px 3px rgba(0,0,0,0.3);
+    border-radius: 3px;
+    background: rgb(10, 10, 10);
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+    align-items:center;
+    justify-content: center;
+    #admin-board-avatar{
+        width:60px;
+    }
+    #info-section{
+        border-top: 2px solid rgb(78, 78, 78);
+        padding-top:35px;
+        width:100%;
+        display:flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content: center;
+        h3{
+            color:#d4b31c;
+            text-align:center;
+        }
+        #admin-table{
+            font-size: 14px;
+            margin-top:20px;
+            width:100%;
+            border-spacing: 16px;
+            tr{
+                th{
+                    border-radius:1px;
+                }
+                td{
+                    border-radius:1px;
+                    text-align: center;
+                    img{
+                        width:13px;
+                        padding-top:3px;
+                    }
+                    a{
+                        color:#fff;
+                        text-decoration: none;
+                    }
+                }
+                &:first-child{
+                    background: #d4b31c;
+                    color:#000;
+                }
+            }
+            #user-header{
+                background:rgb(24, 24, 24);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 900px){
+    #admin-table{
+        font-size: 12px;
+    }
+}

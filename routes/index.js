@@ -15,6 +15,31 @@ function isLoggedIn(req, res, next) {
   }
 }
 
+//middleware for message-delete authentication
+function isAuthorizedToDeleteMsg(req, res, next) {
+  Message.findOne({_id: req.params.id})
+    .populate('user')
+    .then((messageOwner) => {
+      const isOwnerOfMessage = JSON.stringify(messageOwner.user._id) === JSON.stringify(req.user._id)
+      if(req.user.admin || isOwnerOfMessage){
+        next()
+      } else{
+        console.log('not authorized')
+        res.redirect('/')
+      }
+    })
+    .catch(err => next(err))
+}
+
+//check if user is admin
+function isAdmin(req, res, next){
+  if(req.user.admin){
+    next()
+  } else{
+    res.redirect('/')
+  }
+}
+
 /* GET home page. */
 router.get('/', async (req, res) => {
   try{
@@ -23,11 +48,10 @@ router.get('/', async (req, res) => {
       .sort([['post_date', 'descending']])
       .populate('user')
    console.log('user :' + res.locals.currentUser)
-   console.log(allMessages) //date debug
    
    res.render('index',{user: res.locals.currentUser, messages: allMessages});
   } catch(err){
-    return next (err)
+    return next (err) 
   }
 });
  
@@ -37,9 +61,11 @@ router.get('/create-message', isLoggedIn, message_controller.create_message_get)
 
 router.post('/create-message', message_controller.create_message_post)
 
-router.get('/delete-message/:id', message_controller.delete_message_get)
+router.get('/delete-message/admin/:id', isLoggedIn, isAuthorizedToDeleteMsg, message_controller.delete_message_get_admin)
 
-router.post('/delete-message/:id', message_controller.delete_message_post)
+router.get('/delete-message/:id', isLoggedIn, isAuthorizedToDeleteMsg, message_controller.delete_message_get)
+
+router.post('/delete-message/:id',isLoggedIn, isAuthorizedToDeleteMsg,  message_controller.delete_message_post)
 
 router.get('/become-member', isLoggedIn, message_controller.member_get)
 
@@ -53,6 +79,9 @@ router.post('/become-admin', message_controller.admin_post)
 router.get('/user/:id', isLoggedIn, profile_controller.profile_page_get)
 
 router.post('/update-user/:id', isLoggedIn, profile_controller.profile_page_update)
+
+//ADMIN board (no need to make other routes for delete)
+router.get('/admin-board', isLoggedIn, isAdmin, profile_controller.admin_board_get)
 
 //AUTH ROUTES
 router.get('/log-in', auth_controller.log_in_get)

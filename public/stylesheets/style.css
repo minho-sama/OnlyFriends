@@ -395,6 +395,100 @@ nav ul li a {
   }
 }
 
+#admin-board {
+  width: 90%;
+  margin: 40px 5% 70px;
+  margin-top: 50px !important;
+  padding: 30px;
+  -webkit-box-shadow: 3px 0px 3px rgba(0, 0, 0, 0.3);
+          box-shadow: 3px 0px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  background: #0a0a0a;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 40px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#admin-board #admin-board-avatar {
+  width: 60px;
+}
+
+#admin-board #info-section {
+  border-top: 2px solid #4e4e4e;
+  padding-top: 35px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#admin-board #info-section h3 {
+  color: #d4b31c;
+  text-align: center;
+}
+
+#admin-board #info-section #admin-table {
+  font-size: 14px;
+  margin-top: 20px;
+  width: 100%;
+  border-spacing: 16px;
+}
+
+#admin-board #info-section #admin-table tr th {
+  border-radius: 1px;
+}
+
+#admin-board #info-section #admin-table tr td {
+  border-radius: 1px;
+  text-align: center;
+}
+
+#admin-board #info-section #admin-table tr td img {
+  width: 13px;
+  padding-top: 3px;
+}
+
+#admin-board #info-section #admin-table tr td a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#admin-board #info-section #admin-table tr:first-child {
+  background: #d4b31c;
+  color: #000;
+}
+
+#admin-board #info-section #admin-table #user-header {
+  background: #181818;
+}
+
+@media only screen and (max-width: 900px) {
+  #admin-table {
+    font-size: 12px;
+  }
+}
+
 #submit-form {
   width: 90%;
   margin: 40px 5% 70px;
@@ -417,6 +511,7 @@ nav ul li a {
           box-shadow: 3px 0px 3px rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   background: #0a0a0a;
+  position: relative;
 }
 
 #submit-form h1 {
@@ -547,13 +642,72 @@ nav ul li a {
   font-weight: 600;
 }
 
-#err-msg-login, #err-msg-signup, #err-msg-create-msg {
+#submit-form #delete-field, #submit-form .flex-center, #submit-form .grey-bg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+
+#submit-form .flex-center {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+#submit-form .grey-bg {
+  background: #222121;
+  border-radius: 3px;
+  padding: 10px;
+  width: 380px;
+  min-height: 100px;
+}
+
+#submit-form #delete-form-username {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #d4b31c;
+}
+
+#submit-form .input-field-psw-smaller {
+  margin-top: 27px;
+}
+
+#submit-form .input-field-psw-smaller #password {
+  font-size: 12px;
+}
+
+#submit-form .input-field-psw-smaller #password:focus {
+  outline: none;
+}
+
+#submit-form .input-field-psw-smaller button {
+  font-size: 12px;
+}
+
+#err-msg-login, #err-msg-signup, #err-msg-create-msg, #success-msg-signup {
   color: #e24646;
   text-shadow: 2px 2px 2px rgba(51, 49, 49, 0.3);
   -ms-flex-item-align: start;
       align-self: flex-start;
   margin-left: 13px;
   font-size: 12px;
+}
+
+#success-msg-signup {
+  color: #35ce35;
 }
 
 @media only screen and (min-width: 800px) {

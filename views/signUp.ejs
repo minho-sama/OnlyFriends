@@ -21,7 +21,12 @@
                 <%errors.forEach(error => {%>
                     <p id = "err-msg-signup"><%=error.msg%></p>
                 <%})%>
-            <%}%>
+            <%}%> 
+            <%if(success.length > 0){%>
+                <%success.forEach(msg => {%>
+                    <p id = "success-msg-signup"><%=msg.msg%></p>
+                <%})%>
+            <%}%> 
             <label id = "choose-caption" for = "cc-selector">Choose an avatar:</label>
             <div class="cc-selector">
 
