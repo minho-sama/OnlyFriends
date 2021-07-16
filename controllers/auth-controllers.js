@@ -28,6 +28,7 @@ const sign_up_post = [
     body('password').trim().isLength({min:1}).escape().withMessage('password must be at least 1 character'),
 
     async (req,res,next) => {
+        //could have used mongo-> unique:true in userSchema
         const takenUsername = await User.find({username: req.body.username})
         const errors = validationResult(req)
         if(!errors.isEmpty()){
